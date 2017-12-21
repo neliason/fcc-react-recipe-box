@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+}
+
+.ingredients {
+  display: none;
+}
+
+.recipe-name {
+  background-color: lightgreen;
+  margin: 5px 5% 0 5%;
+  border-radius: 5px;
+}
