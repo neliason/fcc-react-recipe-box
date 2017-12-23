@@ -2,8 +2,13 @@
   text-align: center;
 }
 
+.Collapsible {
+  background-color: lightgreen;
+  text-align: left;
+}
+
 .ingredients {
-  display: none;
+  background-color: white;
 }
 
 .recipe-name {

@@ -34,7 +34,6 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.recipes.map(function (recipe, index) {
-          console.log("receipe", recipe);
           return (
             <Recipe
               name={recipe.name}
