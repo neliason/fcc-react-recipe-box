@@ -16,3 +16,30 @@
   margin: 5px 5% 0 5%;
   border-radius: 5px;
 }
+
+.Collapsible__trigger {
+  display: block;
+  font-weight: 400;
+  text-decoration: none;
+  color: gray;
+  position: relative;
+  border: 1px solid white;
+  padding: 10px;
+  background: lightgreen;
+  color: green;
+  cursor: pointer;
+}
+
+.Collapsible__trigger::after {
+  font-family: 'FontAwesome';
+  content: '\f107';
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  display: block;
+  transition: transform 200ms;
+}
+
+.Collapsible__trigger.is-open::after {
+  transform: rotateZ(180deg);
+}

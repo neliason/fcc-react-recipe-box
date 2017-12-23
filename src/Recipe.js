@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Collapsible from 'react-collapsible';
 
 const Recipe = props =>
-  <Collapsible trigger={props.name}>
+  <Collapsible trigger={props.name} transitionTime="200">
     <div className="recipe">
       {/*
       <div className="recipe-name text-left">
