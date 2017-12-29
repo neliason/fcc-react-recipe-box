@@ -35,6 +35,7 @@ export default class AddRecipeForm extends Component {
 
   onIngredientsChange = (e) => {
     const ingredientString = e.target.value;
+    this.setState({ recipeIngredientsString: ingredientString })
     //var ingredientArray = ingredientString.split(",").trim();
     //this.setState({ recipeIngredients: ingredientArray }); 
   }
@@ -51,18 +52,29 @@ export default class AddRecipeForm extends Component {
           <div className="add-title bold">
             Add a Receipe
           </div>
-          <div className="add-recipe-name">
-            <div className="bold">Recipe</div>
-            <input type="text" className="add-recipe-name-input" />
-          </div>
-          <div className="add-ingredients-input">
-            <div className="bold">Ingredients</div>
-            <textarea className="add-textarea"/>
-          </div>
-          <div className="add-modal-buttons">
-            <button className="btn btn-primary btn-md">Add Recipe</button>
-            <button className="btn btn-md" onClick={this.props.handleCloseModal}>Close</button>
-          </div>
+          <form onSubmit={this.onSubmit}>
+            <div className="add-recipe-name">
+              <div className="bold">Recipe</div>
+              <input 
+                type="text" 
+                className="add-recipe-name-input" 
+                onChange={this.onNameChange}
+                value={this.state.recipeName}
+                placeholder="Recipe Name" />
+            </div>
+            <div className="add-ingredients-input">
+              <div className="bold">Ingredients</div>
+              <textarea
+                className="add-textarea"
+                onChange={this.onIngredientsChange}
+                value={this.state.recipeIngredientsString}
+                placeholder="Enter Ingredients, separated, by, commas" />
+            </div>
+            <div className="add-modal-buttons">
+              <input type="submit" value="Add Recipe" className="btn btn-primary btn-md" />
+              <button className="btn btn-md" onClick={this.props.handleCloseModal}>Close</button>
+            </div>
+          </form>
         </div>
       </ReactModal>
     );
