@@ -2,9 +2,17 @@
   text-align: center;
 }
 
+.recipes {
+  margin: 50px;
+  background-color: rgb(240, 238, 238);
+  padding: 30px;
+  border-radius: 5px;
+}
+
 .Collapsible {
   background-color: lightgreen;
   text-align: left;
+  margin-top: 5px;
 }
 
 .ingredients {
@@ -21,12 +29,11 @@
   display: block;
   font-weight: 400;
   text-decoration: none;
-  color: gray;
+  color: green;
   position: relative;
   border: 1px solid white;
   padding: 10px;
   background: lightgreen;
-  color: green;
   cursor: pointer;
 }
 
@@ -42,4 +49,25 @@
 
 .Collapsible__trigger.is-open::after {
   transform: rotateZ(180deg);
+}
+
+.Modal {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  right: auto;
+  bottom: auto;
+  width: 50%;
+  height: 300px;
+  background-color: white;
+  padding: 30px;
+}
+
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
 }
