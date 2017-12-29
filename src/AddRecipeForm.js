@@ -48,16 +48,16 @@ export default class AddRecipeForm extends Component {
         overlayClassName="Overlay"
       >
         <div className="add-modal">
-          <div className="add-title">
+          <div className="add-title bold">
             Add a Receipe
           </div>
-          <div className="add-recipe-input">
-            Recipe<br />
-            <input type="text" />
+          <div className="add-recipe-name">
+            <div className="bold">Recipe</div>
+            <input type="text" className="add-recipe-name-input" />
           </div>
           <div className="add-ingredients-input">
-            Ingredients<br />
-            <textarea />
+            <div className="bold">Ingredients</div>
+            <textarea className="add-textarea"/>
           </div>
           <div className="add-modal-buttons">
             <button className="btn btn-primary btn-md">Add Recipe</button>

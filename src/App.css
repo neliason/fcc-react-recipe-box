@@ -71,3 +71,15 @@
   bottom: 0;
   background-color: rgba(0,0,0,0.5);
 }
+
+.add-title {
+  font-size: 20px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.add-textarea, .add-recipe-name-input {
+  width: 100%;
+}
