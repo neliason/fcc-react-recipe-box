@@ -2,19 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import ReactModal from 'react-modal';
 
-/*
-const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-    
-  }
-}; */
-
 export default class AddRecipeForm extends Component {
 
   state = {
@@ -36,16 +23,13 @@ export default class AddRecipeForm extends Component {
   onIngredientsChange = (event) => {
     const ingredientString = event.target.value;
     this.setState({ recipeIngredientsString: ingredientString })
-    //var ingredientArray = ingredientString.split(",").trim();
-    //this.setState({ recipeIngredients: ingredientArray }); 
   }
 
   onSubmit = (event) => {
     if (event) event.preventDefault();
-    const ingredientArray = this.state.recipeIngredientsString.split(",");
+    const ingredientArray = this.state.recipeIngredientsString.split(",").map(s => s.trim());
     if (!this.state.recipeName.match(/^\s*$/))
       this.props.onAdd(this.state.recipeName, ingredientArray);
-    //this.props.onAdd(this.state.name);
     this.setState({ 
       recipeName: '',
       recipeIngredientsString: ''
@@ -85,7 +69,7 @@ export default class AddRecipeForm extends Component {
             </div>
             <div className="add-modal-buttons">
               <input type="submit" value="Add Recipe" className="btn btn-primary btn-md" />
-              <button className="btn btn-md" onClick={this.props.handleCloseModal}>Close</button>
+              <button className="btn btn-md btn-default" onClick={this.props.handleCloseModal}>Close</button>
             </div>
           </form>
         </div>

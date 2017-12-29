@@ -83,3 +83,7 @@
 .add-textarea, .add-recipe-name-input {
   width: 100%;
 }
+
+.recipe-buttons {
+  background-color: white;
+}

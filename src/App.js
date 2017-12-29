@@ -37,6 +37,11 @@ class App extends Component {
     this.setState(this.state);
   }
 
+  onRemoveRecipe = (index) => {
+    this.state.recipes.splice(index, 1);
+    this.setState(this.state);
+  }
+
   handleOpenAddModal = () =>
     this.setState({ showAddModal: true });
 
@@ -53,9 +58,10 @@ class App extends Component {
               <Recipe
                 name={recipe.name}
                 ingredients={recipe.ingredients}
+                onRemove={() => this.onRemoveRecipe(index)}
                 key={index} />
             );
-          })}
+          }.bind(this))}
         </div>
         <AddRecipeForm 
           showModal={this.state.showAddModal} 

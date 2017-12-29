@@ -26,13 +26,23 @@ const Recipe = props =>
           })}
         </div>
       </div>
+      <div className="recipe-buttons">
+          <button 
+            className="btn btn-md btn-danger"
+            onClick={props.onRemove}  
+          >
+            Delete
+          </button>
+          <button className="btn btn-md btn-default">Edit</button>
+      </div>
     </div>
   </Collapsible>
 
 
 Recipe.propTypes = {
   name: PropTypes.string.isRequired,
-  ingredients: PropTypes.array.isRequired
+  ingredients: PropTypes.array.isRequired,
+  onRemove: PropTypes.func.isRequired
 }
 
 export default Recipe;
