@@ -43,7 +43,8 @@ export default class AddRecipeForm extends Component {
   onSubmit = (event) => {
     if (event) event.preventDefault();
     const ingredientArray = this.state.recipeIngredientsString.split(",");
-    this.props.onAdd(this.state.recipeName, ingredientArray);
+    if (!this.state.recipeName.match(/^\s*$/))
+      this.props.onAdd(this.state.recipeName, ingredientArray);
     //this.props.onAdd(this.state.name);
     this.setState({ 
       recipeName: '',
