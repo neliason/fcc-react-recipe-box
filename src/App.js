@@ -32,8 +32,9 @@ class App extends Component {
     //load saved recipes
   }
 
-  addRecipe = () => {
-
+  onAddRecipe = (name, ingredients) => {
+    this.state.recipes.push({ name: name, ingredients: ingredients });
+    this.setState(this.state);
   }
 
   handleOpenAddModal = () =>
@@ -58,7 +59,8 @@ class App extends Component {
         </div>
         <AddRecipeForm 
           showModal={this.state.showAddModal} 
-          handleCloseModal={this.handleCloseAddModal} />
+          handleCloseModal={this.handleCloseAddModal}
+          onAdd={this.onAddRecipe} />
         <button 
           className="add-recipe-btn btn-primary btn btn-lg"
           onClick={this.handleOpenAddModal}>

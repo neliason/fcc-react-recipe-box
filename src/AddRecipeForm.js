@@ -19,26 +19,38 @@ export default class AddRecipeForm extends Component {
 
   state = {
     recipeName: '',
-    recipeIngredientsString: '',
-    recipeIngredientsArray: []
+    recipeIngredientsString: ''
   }
 
   static propTypes = {
       showModal: PropTypes.bool.isRequired,
-      handleCloseModal: PropTypes.func.isRequired
+      handleCloseModal: PropTypes.func.isRequired,
+      onAdd: PropTypes.func.isRequired
   }
 
-  onNameChange = (e) => {
-    const recipeName = e.target.value;
+  onNameChange = (event) => {
+    const recipeName = event.target.value;
     this.setState({ recipeName: recipeName });
   }
 
-  onIngredientsChange = (e) => {
-    const ingredientString = e.target.value;
+  onIngredientsChange = (event) => {
+    const ingredientString = event.target.value;
     this.setState({ recipeIngredientsString: ingredientString })
     //var ingredientArray = ingredientString.split(",").trim();
     //this.setState({ recipeIngredients: ingredientArray }); 
   }
+
+  onSubmit = (event) => {
+    if (event) event.preventDefault();
+    const ingredientArray = this.state.recipeIngredientsString.split(",");
+    this.props.onAdd(this.state.recipeName, ingredientArray);
+    //this.props.onAdd(this.state.name);
+    this.setState({ 
+      recipeName: '',
+      recipeIngredientsString: ''
+    });
+    this.props.handleCloseModal();
+  };
 
   render() {
     return (
