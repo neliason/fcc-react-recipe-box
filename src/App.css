@@ -51,7 +51,7 @@
   transform: rotateZ(180deg);
 }
 
-.Modal {
+.TheModal {
   position: absolute;
   top: 25%;
   left: 25%;
@@ -76,11 +76,15 @@
   font-size: 20px;
 }
 
+.modal-title {
+  font-size: 20px;
+}
+
 .bold {
   font-weight: 600;
 }
 
-.add-textarea, .add-recipe-name-input {
+.add-textarea, .add-recipe-name-input, .modal-recipe-name-input {
   width: 100%;
 }
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Recipe from './Recipe'
-import AddRecipeForm from './AddRecipeForm'
+import Recipe from './Recipe';
+import AddRecipeForm from './AddRecipeForm';
+import MyModal from './MyModal';
 
 class App extends Component {
 
@@ -25,7 +26,10 @@ class App extends Component {
         ]
       }
     ],
-    showAddModal: false
+    showModal: false,
+    modalSubmitButtonText: "Add Recipe",
+    modalRecipeName: 'test',
+    modalRecipeIngredients: ["hi"]
   }
 
   componentDidMount() {
@@ -42,11 +46,22 @@ class App extends Component {
     this.setState(this.state);
   }
 
-  handleOpenAddModal = () =>
-    this.setState({ showAddModal: true });
+  onEditRecipe = (index) => {
+    var name = this.state.recipes[index].name;
+    var ingredients = this.state.recipes[index].ingredients;
+    this.handleOpenModal("Edit Recipe", name, ingredients);
+  }
 
-  handleCloseAddModal = () =>
-    this.setState({ showAddModal: false });
+  handleOpenModal = (modalSubmitButtonText, name, ingredients) =>
+    this.setState({
+      modalSubmitButtonText: modalSubmitButtonText,
+      modalRecipeName: name,
+      modalRecipeIngredients: ingredients,
+      showModal: true
+    });
+
+  handleCloseModal = () =>
+    this.setState({ showModal: false });
 
 
   render() {
@@ -59,17 +74,27 @@ class App extends Component {
                 name={recipe.name}
                 ingredients={recipe.ingredients}
                 onRemove={() => this.onRemoveRecipe(index)}
+                onEdit={() => this.onEditRecipe(index)}
                 key={index} />
             );
           }.bind(this))}
         </div>
+        <MyModal 
+          showModal={this.state.showModal} 
+          handleCloseModal={this.handleCloseModal}
+          onAdd={this.onAddRecipe} 
+          primaryButtonText={this.state.modalSubmitButtonText}
+          recipeName={this.state.modalRecipeName}
+          recipeIngredientArray={this.state.modalRecipeIngredients} />
+        {/*
         <AddRecipeForm 
-          showModal={this.state.showAddModal} 
+          showModal={this.state.showModal} 
           handleCloseModal={this.handleCloseAddModal}
           onAdd={this.onAddRecipe} />
+        */}
         <button 
           className="add-recipe-btn btn-primary btn btn-lg"
-          onClick={this.handleOpenAddModal}>
+          onClick={() => this.handleOpenModal("Add Recipe", "", [])}>
           Add Recipe
         </button>
       </div>
