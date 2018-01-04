@@ -13,9 +13,11 @@ export default class MyModal extends Component {
     showModal: PropTypes.bool.isRequired,
     handleCloseModal: PropTypes.func.isRequired,
     onAdd: PropTypes.func.isRequired,
+    onEdit: PropTypes.func.isRequired,
     primaryButtonText: PropTypes.string.isRequired,
     recipeName: PropTypes.string,
-    recipeIngredientArray: PropTypes.array.isRequired
+    recipeIngredientArray: PropTypes.array.isRequired,
+    recipeIndex: PropTypes.number
   }
 
   componentWillMount() {
@@ -49,11 +51,15 @@ export default class MyModal extends Component {
     this.props.handleCloseModal();
   }
 
-  onSubmit = (event) => {
-    if (event) event.preventDefault();
+  onSubmit = (primaryButtonText) => {
+    //if (event) event.preventDefault();
     const ingredientArray = this.state.recipeIngredientsString.split(",").map(s => s.trim());
-    if (!this.state.recipeName.match(/^\s*$/))
-      this.props.onAdd(this.state.recipeName, ingredientArray);
+    if (!this.state.recipeName.match(/^\s*$/)) {
+      if (primaryButtonText === "Add Recipe")
+        this.props.onAdd(this.state.recipeName, ingredientArray);
+      else
+        this.props.onEdit(this.props.recipeIndex, this.state.recipeName, ingredientArray);
+    }
     this.setState({ 
       recipeName: '',
       recipeIngredientsString: ''
@@ -73,7 +79,7 @@ export default class MyModal extends Component {
           <div className="modal-title bold">
             Add a Receipe
           </div>
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={() => this.onSubmit(this.props.primaryButtonText)}>
             <div className="modal-recipe-name">
               <div className="bold">Recipe</div>
               <input 

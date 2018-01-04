@@ -29,7 +29,8 @@ class App extends Component {
     showModal: false,
     modalSubmitButtonText: "Add Recipe",
     modalRecipeName: 'test',
-    modalRecipeIngredients: ["hi"]
+    modalRecipeIngredients: ["hi"],
+    modalRecipeIndex: 0
   }
 
   componentDidMount() {
@@ -46,17 +47,32 @@ class App extends Component {
     this.setState(this.state);
   }
 
-  onEditRecipe = (index) => {
+  onEditRecipeButtonPress = (index) => {
     var name = this.state.recipes[index].name;
     var ingredients = this.state.recipes[index].ingredients;
-    this.handleOpenModal("Edit Recipe", name, ingredients);
+    this.handleOpenModal("Edit Recipe", index, name, ingredients);
+  }
+  
+  onEditRecipe = (editIndex, newName, newIngredients) => {
+    this.setState({
+      recipes: this.state.recipes.map((recipe, index) => {
+        if (index === editIndex) {
+          return {
+            name: newName,
+            ingredients: newIngredients
+          }
+        }
+        return recipe;
+      })
+    })
   }
 
-  handleOpenModal = (modalSubmitButtonText, name, ingredients) =>
+  handleOpenModal = (modalSubmitButtonText, index, name, ingredients) =>
     this.setState({
       modalSubmitButtonText: modalSubmitButtonText,
       modalRecipeName: name,
       modalRecipeIngredients: ingredients,
+      modalRecipeIndex: index,
       showModal: true
     });
 
@@ -74,7 +90,7 @@ class App extends Component {
                 name={recipe.name}
                 ingredients={recipe.ingredients}
                 onRemove={() => this.onRemoveRecipe(index)}
-                onEdit={() => this.onEditRecipe(index)}
+                onEdit={() => this.onEditRecipeButtonPress(index)}
                 key={index} />
             );
           }.bind(this))}
@@ -83,9 +99,11 @@ class App extends Component {
           showModal={this.state.showModal} 
           handleCloseModal={this.handleCloseModal}
           onAdd={this.onAddRecipe} 
+          onEdit={this.onEditRecipe}
           primaryButtonText={this.state.modalSubmitButtonText}
           recipeName={this.state.modalRecipeName}
-          recipeIngredientArray={this.state.modalRecipeIngredients} />
+          recipeIngredientArray={this.state.modalRecipeIngredients}
+          recipeIndex={this.state.modalRecipeIndex} />
         {/*
         <AddRecipeForm 
           showModal={this.state.showModal} 
@@ -94,7 +112,7 @@ class App extends Component {
         */}
         <button 
           className="add-recipe-btn btn-primary btn btn-lg"
-          onClick={() => this.handleOpenModal("Add Recipe", "", [])}>
+          onClick={() => this.handleOpenModal("Add Recipe", -1, "", [])}>
           Add Recipe
         </button>
       </div>
