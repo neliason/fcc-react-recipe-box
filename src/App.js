@@ -30,7 +30,7 @@ class App extends Component {
     modalSubmitButtonText: "Add Recipe",
     modalRecipeName: 'test',
     modalRecipeIngredients: ["hi"],
-    modalRecipeIndex: 0
+    modalRecipeIndex: -1
   }
 
   componentDidMount() {

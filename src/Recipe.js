@@ -10,13 +10,17 @@ const Recipe = props =>
           Ingredients
         </div>
         <div className="ingredients-list">
-          {props.ingredients.map(function (ingredient, index) {
-            return (
-              <div className="ingredient" key={index}>
-                {ingredient}
-              </div>
-            );
-          })}
+          <table>
+            {props.ingredients.map(function (ingredient, index) {
+              return (
+                <tr>
+                  <div className="ingredient" key={index}>
+                    {ingredient}
+                  </div>
+                </tr>
+              );
+            })}
+          </table>
         </div>
       </div>
       <div className="recipe-buttons">

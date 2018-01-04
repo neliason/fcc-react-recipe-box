@@ -9,6 +9,10 @@
   border-radius: 5px;
 }
 
+.recipe {
+  padding: 10px;
+}
+
 .Collapsible {
   background-color: lightgreen;
   text-align: left;
@@ -17,6 +21,28 @@
 
 .ingredients {
   background-color: white;
+}
+
+.ingredients-title {
+  font-size: 18px;
+}
+
+.ingredients-list {
+  font-size: 15px;
+  padding: 15px 0 10px 0;
+}
+
+.ingredient {
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #cccccc;
+}
+
+tr {
+  border: 1px solid #cccccc;
 }
 
 .recipe-name {
@@ -51,6 +77,10 @@
   transform: rotateZ(180deg);
 }
 
+.Collapsible__contentInner {
+  background-color: white;
+}
+
 .TheModal {
   position: absolute;
   top: 25%;
@@ -72,10 +102,6 @@
   background-color: rgba(0,0,0,0.5);
 }
 
-.add-title {
-  font-size: 20px;
-}
-
 .modal-title {
   font-size: 20px;
 }
@@ -84,7 +110,7 @@
   font-weight: 600;
 }
 
-.add-textarea, .add-recipe-name-input, .modal-recipe-name-input {
+.modal-textarea, .modal-recipe-name-input {
   width: 100%;
 }
 
