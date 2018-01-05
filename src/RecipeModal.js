@@ -51,8 +51,8 @@ export default class RecipeModal extends Component {
     this.props.handleCloseModal();
   }
 
-  onSubmit = (primaryButtonText) => {
-    //if (event) event.preventDefault();
+  onSubmit = (primaryButtonText, event) => {
+    if (event) event.preventDefault();
     const ingredientArray = this.state.recipeIngredientsString.split(",").map(s => s.trim());
     if (!this.state.recipeName.match(/^\s*$/)) {
       if (primaryButtonText === "Add Recipe")
