@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Collapsible from 'react-collapsible';
+import IngredientList from "./IngredientList";
 
 const Recipe = props =>
   <Collapsible trigger={props.name} transitionTime={200}>
@@ -9,19 +10,9 @@ const Recipe = props =>
         <div className="ingredients-title text-center">
           Ingredients
         </div>
-        <div className="ingredients-list">
-          <table>
-            <tbody>
-              {props.ingredients.map(function (ingredient, index) {
-                return (
-                  <tr key={index}>
-                    <td className="ingredient">{ingredient}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        <IngredientList
+          ingredients={props.ingredients} 
+        />
       </div>
       <div className="recipe-buttons">
           <button 
