@@ -34,7 +34,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    //load saved recipes
+    if (localStorage.getItem("recipes") !== null) {
+      this.setState({
+        recipes: JSON.parse(localStorage.getItem("recipes"))
+      });
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("recipes", JSON.stringify(this.state.recipes));
   }
 
   onAddRecipe = (name, ingredients) => {
