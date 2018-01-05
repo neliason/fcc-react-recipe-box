@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import ReactModal from 'react-modal';
 
-export default class MyModal extends Component {
+export default class RecipeModal extends Component {
   
   state = {
     recipeName: "",

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Collapsible from 'react-collapsible';
 
 const Recipe = props =>
-  <Collapsible trigger={props.name} transitionTime="200">
+  <Collapsible trigger={props.name} transitionTime={200}>
     <div className="recipe">
       <div className="ingredients">
         <div className="ingredients-title text-center">
@@ -11,15 +11,15 @@ const Recipe = props =>
         </div>
         <div className="ingredients-list">
           <table>
-            {props.ingredients.map(function (ingredient, index) {
-              return (
-                <tr>
-                  <div className="ingredient" key={index}>
-                    {ingredient}
-                  </div>
-                </tr>
-              );
-            })}
+            <tbody>
+              {props.ingredients.map(function (ingredient, index) {
+                return (
+                  <tr key={index}>
+                    <td className="ingredient">{ingredient}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>

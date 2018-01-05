@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Recipe from './Recipe';
-import AddRecipeForm from './AddRecipeForm';
-import MyModal from './MyModal';
+import RecipeModal from './RecipeModal';
 
 class App extends Component {
 
@@ -103,7 +102,7 @@ class App extends Component {
             );
           }.bind(this))}
         </div>
-        <MyModal 
+        <RecipeModal 
           showModal={this.state.showModal} 
           handleCloseModal={this.handleCloseModal}
           onAdd={this.onAddRecipe} 
@@ -112,12 +111,6 @@ class App extends Component {
           recipeName={this.state.modalRecipeName}
           recipeIngredientArray={this.state.modalRecipeIngredients}
           recipeIndex={this.state.modalRecipeIndex} />
-        {/*
-        <AddRecipeForm 
-          showModal={this.state.showModal} 
-          handleCloseModal={this.handleCloseAddModal}
-          onAdd={this.onAddRecipe} />
-        */}
         <button 
           className="add-recipe-btn btn-primary btn btn-lg"
           onClick={() => this.handleOpenModal("Add Recipe", -1, "", [])}>

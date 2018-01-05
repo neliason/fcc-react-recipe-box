@@ -34,15 +34,12 @@
 
 .ingredient {
   padding: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 10px;
 }
 
 table {
   width: 100%;
-  border: 1px solid #cccccc;
-}
-
-tr {
-  border: 1px solid #cccccc;
 }
 
 .recipe-name {
