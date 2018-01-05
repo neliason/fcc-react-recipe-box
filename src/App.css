@@ -114,3 +114,11 @@ table {
 .recipe-buttons {
   background-color: white;
 }
+
+.add-recipe-btn {
+  margin-top: -20px;
+}
+
+.delete-btn {
+  margin-right: 5px;
+}

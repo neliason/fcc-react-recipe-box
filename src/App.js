@@ -27,8 +27,8 @@ class App extends Component {
     ],
     showModal: false,
     modalSubmitButtonText: "Add Recipe",
-    modalRecipeName: 'test',
-    modalRecipeIngredients: ["hi"],
+    modalRecipeName: "",
+    modalRecipeIngredients: [],
     modalRecipeIndex: -1
   }
 

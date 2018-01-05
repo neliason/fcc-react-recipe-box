@@ -16,7 +16,7 @@ const Recipe = props =>
       </div>
       <div className="recipe-buttons">
           <button 
-            className="btn btn-md btn-danger"
+            className="delete-btn btn btn-md btn-danger"
             onClick={props.onRemove}  
           >
             Delete
