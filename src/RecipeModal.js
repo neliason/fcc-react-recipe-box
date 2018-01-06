@@ -51,7 +51,7 @@ export default class RecipeModal extends Component {
     this.props.handleCloseModal();
   }
 
-  onSubmit = (primaryButtonText, event) => {
+  onSubmit = (event, primaryButtonText) => {
     if (event) event.preventDefault();
     const ingredientArray = this.state.recipeIngredientsString.split(",").map(s => s.trim());
     if (!this.state.recipeName.match(/^\s*$/)) {
@@ -77,9 +77,10 @@ export default class RecipeModal extends Component {
       >
         <div className="the-modal">
           <div className="modal-title bold">
-            Add a Receipe
+            {this.props.primaryButtonText}
           </div>
-          <form onSubmit={() => this.onSubmit(this.props.primaryButtonText)}>
+          <hr />
+          <form onSubmit={(event) => this.onSubmit(event, this.props.primaryButtonText)}>
             <div className="modal-recipe-name">
               <div className="bold">Recipe</div>
               <input 
@@ -97,9 +98,9 @@ export default class RecipeModal extends Component {
                 value={this.state.recipeIngredientsString}
                 placeholder="Enter Ingredients, separated, by, commas" />
             </div>
-            <div className="modal-buttons">
-              <input type="submit" value={this.props.primaryButtonText} className="btn btn-primary btn-md" />
-              <button className="btn btn-md btn-default" onClick={this.handleCloseModal}>Close</button>
+            <div className="modal-buttons text-right">
+              <input type="submit" value={this.props.primaryButtonText} className="modal-submit-btn btn btn-primary btn-md" />
+              <button className="btn btn-md btn-default modal-close-btn" onClick={this.handleCloseModal}>Close</button>
             </div>
           </form>
         </div>
