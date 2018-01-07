@@ -29,13 +29,17 @@
 
 .ingredients-list {
   font-size: 15px;
-  padding: 15px 0 10px 0;
+  margin: 15px 0 10px 0;
+  border: 1px solid #cccccc;
+  border-radius: 7px;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #cccccc;
 }
 
 .ingredient {
   padding: 5px;
-  border: 1px solid #cccccc;
-  border-radius: 10px;
 }
 
 table {
@@ -43,7 +47,7 @@ table {
 }
 
 .recipe-name {
-  background-color: lightgreen;
+  background-color: rgb(172, 240, 172);
   margin: 5px 5% 0 5%;
   border-radius: 5px;
 }
@@ -56,8 +60,13 @@ table {
   position: relative;
   border: 1px solid white;
   padding: 10px;
-  background: lightgreen;
+  background: rgb(172, 240, 172);
   cursor: pointer;
+  border-radius: 7px;
+}
+
+.Collapsible {
+  border-radius: 7px;
 }
 
 .Collapsible__trigger::after {
@@ -74,8 +83,17 @@ table {
   transform: rotateZ(180deg);
 }
 
+.Collapsible__trigger.is-open {
+  border-top-right-radius: 7px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .Collapsible__contentInner {
   background-color: white;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
 }
 
 .TheModal {
@@ -139,6 +157,10 @@ hr {
 input:focus, textarea:focus, .TheModal:focus {
   outline: none;
   box-shadow: 0px 0px 5px rgb(77, 159, 252);
+}
+
+.add-recipe-btn:focus, .add-recipe-btn:active {
+  outline: none;
 }
 
 .modal-ingredients-input {
