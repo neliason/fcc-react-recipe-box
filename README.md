@@ -1,1 +1,1 @@
-FreeCodeCamp Recipe Box project in React
+Recipe Box project in React
